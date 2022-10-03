@@ -129,6 +129,7 @@ def draw(self):
       # pygame.draw.line(screen, black, p3, p4, 1);
       pygame.draw.line(screen, black, p4, p1, 1);
       draw_cell(self.x, self.y, p1, p2, p3, p4, self.age);
+
 def grow(self):
       if (self.age > max_age):
          return;
@@ -136,12 +137,12 @@ def grow(self):
          self.size *= size_growth_rate;
       if (self.age < first_branch_max_age or self.age < second_branch_max_age):
          chance = random.randint(0, 1000);
-         if ((chance < second_branch_chance and self.nchildren < 2 and self.age < second_branch_max_age) or (chance < first_branch_chance and self.nchildren < 1 and self.age < first_branch_max_age)):random_angle = self.angle + deg_to_rad(-branch_angle + random.randint(0, branch_angle * 2));
-	    tx = self.x + math.sin(self.angle) * self.size * cell_offset;
-	    ty = self.y + -math.cos(self.angle) * self.size * cell_offset;
-            newcell = cell(tx, ty, 1, random_angle, self.index);
-	    add_cell(newcell);
-            self.nchildren = self.nchildren + 1;
+#      if ((chance < second_branch_chance and self.nchildren < 2 and self.age < second_branch_max_age) or (chance < first_branch_chance and self.nchildren < 1 and self.age < first_branch_max_age)):random_angle = self.angle + deg_to_rad(-branch_angle + random.randint(0, branch_angle * 2));
+#	    tx = self.x + math.sin(self.angle) * self.size * cell_offset;
+#	    ty = self.y + -math.cos(self.angle) * self.size * cell_offset;
+#           newcell = cell(tx, ty, 1, random_angle, self.index);
+#	    add_cell(newcell);
+#            self.nchildren = self.nchildren + 1;
       if (self.parent >= 0):
          p = cells[self.parent];
          self.x = p.x + math.sin(p.angle) * p.size * cell_offset;
