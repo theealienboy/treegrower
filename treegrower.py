@@ -40,7 +40,7 @@ first_branch_max_age = 30
 size_growth_rate = 1.007
 size_growth_age_limit = 400
 cell_offset = 2.0
-max_age = 400 
+max_age = 400
 
 black = (20, 20, 22)
 white = (255, 255, 255)
@@ -67,10 +67,10 @@ def translate_point(p, x, y):
 def deg_to_rad(angle):
    return angle * math.pi / 180.0;
 
-cellindex = 0;
+cellindex = 50;
 
 def draw_leaves(x, y, n, age):
-    g = random.randint(0, 50) - age;
+    g = random.randint(0, 20) - age;
     c = (int(0.15 * 40), int(0.15 * (80 + g)), int(0.15 * 40));
     for i in range(0, n):
        tx = x + random.randint(0, 80) - 40;
@@ -97,10 +97,11 @@ def draw_cell(x, y, p1, p2, p3, p4, age):
       x2 = p4[0] + i * dx;
       y1 = p1[1] + i * dy;
       y2 = p4[1] + i * dy;
-      pygame.draw.line(screen, linecolor, (x1, y1), (x2, y2), 1);
+      pygame.draw.line(screen, linecolor, (x1, y1), (x2, y2), 5);
       if (age < 2):
-         draw_leaves(x, y, 1, age);
-    
+         draw_leaves(x, y, 5, age);
+
+global chance,grow_cells
 
 class cell:
    def __init__(self, x, y, size, angle, parent):
