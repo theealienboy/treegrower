@@ -103,7 +103,7 @@ def draw_cell(x, y, p1, p2, p3, p4, age):
     
 
 class cell:
-   def __init__(self, x, y, size, angle, parent):
+def __init__(self, x, y, size, angle, parent):
       global cellindex;
       self.x = x;
       self.y = y;
@@ -114,7 +114,7 @@ class cell:
       self.nchildren = 0;
       self.index = cellindex;
       cellindex = cellindex + 1;
-   def draw(self):
+def draw(self):
       p1 = rotate_point((-1 * self.size, -1 * self.size), (0, 0), self.angle);
       p2 = rotate_point((-1 * self.size, 1 * self.size), (0, 0), self.angle);
       p3 = rotate_point((1 * self.size, 1 * self.size), (0, 0), self.angle);
@@ -129,7 +129,7 @@ class cell:
       # pygame.draw.line(screen, black, p3, p4, 1);
       pygame.draw.line(screen, black, p4, p1, 1);
       draw_cell(self.x, self.y, p1, p2, p3, p4, self.age);
-   def grow(self):
+def grow(self):
       if (self.age > max_age):
          return;
       if (self.age < size_growth_age_limit):
