@@ -103,7 +103,7 @@ def draw_cell(x, y, p1, p2, p3, p4, age):
     
 
 class cell:
-def __init__(self, x, y, size, angle, parent):
+   def __init__(self, x, y, size, angle, parent):
       global cellindex;
       self.x = x;
       self.y = y;
@@ -114,7 +114,7 @@ def __init__(self, x, y, size, angle, parent):
       self.nchildren = 0;
       self.index = cellindex;
       cellindex = cellindex + 1;
-def draw(self):
+   def draw(self):
       p1 = rotate_point((-1 * self.size, -1 * self.size), (0, 0), self.angle);
       p2 = rotate_point((-1 * self.size, 1 * self.size), (0, 0), self.angle);
       p3 = rotate_point((1 * self.size, 1 * self.size), (0, 0), self.angle);
@@ -130,19 +130,19 @@ def draw(self):
       pygame.draw.line(screen, black, p4, p1, 1);
       draw_cell(self.x, self.y, p1, p2, p3, p4, self.age);
 
-def grow(self):
+   def grow(self):
       if (self.age > max_age):
          return;
       if (self.age < size_growth_age_limit):
          self.size *= size_growth_rate;
       if (self.age < first_branch_max_age or self.age < second_branch_max_age):
          chance = random.randint(0, 1000);
-#      if ((chance < second_branch_chance and self.nchildren < 2 and self.age < second_branch_max_age) or (chance < first_branch_chance and self.nchildren < 1 and self.age < first_branch_max_age)):random_angle = self.angle + deg_to_rad(-branch_angle + random.randint(0, branch_angle * 2));
-#	    tx = self.x + math.sin(self.angle) * self.size * cell_offset;
-#	    ty = self.y + -math.cos(self.angle) * self.size * cell_offset;
-#           newcell = cell(tx, ty, 1, random_angle, self.index);
-#	    add_cell(newcell);
-#            self.nchildren = self.nchildren + 1;
+      if ((chance < second_branch_chance and self.nchildren < 2 and self.age < second_branch_max_age) or (chance < first_branch_chance and self.nchildren < 1 and self.age < first_branch_max_age)):random_angle = self.angle + deg_to_rad(-branch_angle + random.randint(0, branch_angle * 2));
+      tx = self.x + math.sin(self.angle) * self.size * cell_offset;
+      ty = self.y + -math.cos(self.angle) * self.size * cell_offset;
+      newcell = cell(tx, ty, 1, random_angle, self.index);
+      add_cell(newcell);
+      self.nchildren = self.nchildren + 1;
       if (self.parent >= 0):
          p = cells[self.parent];
          self.x = p.x + math.sin(p.angle) * p.size * cell_offset;
@@ -188,4 +188,3 @@ for i in range(0, niterations):
       pygame.display.update();
 
 time.sleep(10);
-
