@@ -136,8 +136,7 @@ class cell:
          self.size *= size_growth_rate;
       if (self.age < first_branch_max_age or self.age < second_branch_max_age):
          chance = random.randint(0, 1000);
-         if ((chance < second_branch_chance and self.nchildren < 2 and self.age < second_branch_max_age) or (chance < first_branch_chance and self.nchildren < 1 and self.age < first_branch_max_age)):
-	    random_angle = self.angle + deg_to_rad(-branch_angle + random.randint(0, branch_angle * 2));
+         if ((chance < second_branch_chance and self.nchildren < 2 and self.age < second_branch_max_age) or (chance < first_branch_chance and self.nchildren < 1 and self.age < first_branch_max_age)):random_angle = self.angle + deg_to_rad(-branch_angle + random.randint(0, branch_angle * 2));
 	    tx = self.x + math.sin(self.angle) * self.size * cell_offset;
 	    ty = self.y + -math.cos(self.angle) * self.size * cell_offset;
             newcell = cell(tx, ty, 1, random_angle, self.index);
