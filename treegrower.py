@@ -130,7 +130,10 @@ class cell:
       pygame.draw.line(screen, black, p4, p1, 1);
       draw_cell(self.x, self.y, p1, p2, p3, p4, self.age);
 
-   def grow(self):
+global random_angle,grow
+
+
+def grow(self):
       if (self.age > max_age):
          return;
       if (self.age < size_growth_age_limit):
