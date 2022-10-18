@@ -188,4 +188,5 @@ for i in range(0, niterations):
       draw_cells();
       pygame.display.update();
 
+	
 time.sleep(1);
