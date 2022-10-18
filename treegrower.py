@@ -116,10 +116,10 @@ class cell:
       self.index = cellindex;
       cellindex = cellindex + 1;
    def draw(self):
-      p1 = rotate_point((-1 * self.size, -1 * self.size), (0, 0), self.angle);
-      p2 = rotate_point((-1 * self.size, 1 * self.size), (0, 0), self.angle);
-      p3 = rotate_point((1 * self.size, 1 * self.size), (0, 0), self.angle);
-      p4 = rotate_point((1 * self.size, -1 * self.size), (0, 0), self.angle);
+      p1 = rotate_point((-5 * self.size, -1 * self.size), (0, 0), self.angle);
+      p2 = rotate_point((-5 * self.size, 1 * self.size), (0, 0), self.angle);
+      p3 = rotate_point((5 * self.size, 1 * self.size), (0, 0), self.angle);
+      p4 = rotate_point((5 * self.size, -1 * self.size), (0, 0), self.angle);
 
       p1 = translate_point(p1, self.x, self.y);
       p2 = translate_point(p2, self.x, self.y);
@@ -170,7 +170,7 @@ def clear_the_screen():
    for i in range(0, nrects):
       r = pygame.Rect(0, rh * i, screen_width, rh);
       if (i < 0.90 * nrects):
-         pygame.draw.rect(screen, (10 + (nrects - i) * 4, 10 + (nrects - i) * 2, 90 + i), r, 0);
+         pygame.draw.rect(screen, (0 + (nrects - i) * 4, 10 + (nrects - i) * 2, 90 + i), r, 0);
       else:
          pygame.draw.rect(screen, (0, 0, 0), r, 0);
 
@@ -181,11 +181,11 @@ add_cell(cell(3.0 * screen_width / 4.0, screen_height * 0.9, 0.05, 0.0, -1));
 lastcell = cells[0];
 
 for i in range(0, niterations):
-   grow_cells();
+   draw_cells();
    if ((i % draw_every_nth_frame) == 0):
       clear_the_screen();
       # screen.fill(white);   
       draw_cells();
       pygame.display.update();
 
-time.sleep(10);
+time.sleep(1);
