@@ -29,18 +29,18 @@ import time
 
 screen_width = 1350 
 screen_height = 750
-niterations = 150000
-first_branch_chance = 300 # out of 1000
-second_branch_chance = 80 # out of 1000
+niterations = 15000000
+first_branch_chance = 50 # out of 1000
+second_branch_chance = 60 # out of 1000
 second_branch_max_age = 100
 branch_angle = 50 
-draw_every_nth_frame = 30
-max_growth_age = 400
-first_branch_max_age = 30
-size_growth_rate = 20
+draw_every_nth_frame = 300
+max_growth_age = 4000
+first_branch_max_age = 300
+size_growth_rate = 200
 size_growth_age_limit = 4000
 cell_offset = 5.0
-max_age = 400
+max_age = 4000
 
 black = (20, 20, 22)
 white = (255, 255, 255)
@@ -78,7 +78,7 @@ def draw_leaves(x, y, n, age):
        pygame.draw.circle(screen, c, (int(tx), int(ty)), 3, 0);
 
 def draw_cell(x, y, p1, p2, p3, p4, age):
-   nlines = 50;
+   nlines = 100;
    dx = (p2[0] - p1[0]) / float(nlines);
    dy = (p2[1] - p1[1]) / float(nlines);
    for i in range(0, nlines):
@@ -99,7 +99,7 @@ def draw_cell(x, y, p1, p2, p3, p4, age):
       y2 = p4[1] + i * dy;
       pygame.draw.line(screen, linecolor, (x1, y1), (x2, y2), 5);
       if (age < 2):
-         draw_leaves(x, y, 5, age);
+         draw_leaves(x, y, 10, age);
 
 global chance,grow_cells
 
