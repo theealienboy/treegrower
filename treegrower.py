@@ -29,17 +29,17 @@ import time
 
 screen_width = 1350 
 screen_height = 750
-niterations = 500
-first_branch_chance = 100 # out of 1000
+niterations = 150000
+first_branch_chance = 300 # out of 1000
 second_branch_chance = 80 # out of 1000
-second_branch_max_age = 10
-branch_angle = 18 
+second_branch_max_age = 100
+branch_angle = 50 
 draw_every_nth_frame = 30
 max_growth_age = 400
 first_branch_max_age = 30
-size_growth_rate = 1.007
-size_growth_age_limit = 400
-cell_offset = 2.0
+size_growth_rate = 20
+size_growth_age_limit = 4000
+cell_offset = 5.0
 max_age = 400
 
 black = (20, 20, 22)
@@ -67,18 +67,18 @@ def translate_point(p, x, y):
 def deg_to_rad(angle):
    return angle * math.pi / 180.0;
 
-cellindex = 50;
+cellindex = 500;
 
 def draw_leaves(x, y, n, age):
-    g = random.randint(0, 20) - age;
+    g = random.randint(0, 200) - age;
     c = (int(0.15 * 40), int(0.15 * (80 + g)), int(0.15 * 40));
     for i in range(0, n):
-       tx = x + random.randint(0, 80) - 40;
-       ty = y + random.randint(0, 80) - 40;
+       tx = x + random.randint(0, 300) - 40;
+       ty = y + random.randint(0, 300) - 40;
        pygame.draw.circle(screen, c, (int(tx), int(ty)), 3, 0);
 
 def draw_cell(x, y, p1, p2, p3, p4, age):
-   nlines = 20;
+   nlines = 50;
    dx = (p2[0] - p1[0]) / float(nlines);
    dy = (p2[1] - p1[1]) / float(nlines);
    for i in range(0, nlines):
@@ -188,5 +188,4 @@ for i in range(0, niterations):
       draw_cells();
       pygame.display.update();
 
-	
 time.sleep(1);
